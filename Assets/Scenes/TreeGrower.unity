@@ -843,7 +843,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 426498547}
         m_TargetAssemblyTypeName: Grower, Assembly-CSharp
-        m_MethodName: GrowTree
+        m_MethodName: StartTreeGrowing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
