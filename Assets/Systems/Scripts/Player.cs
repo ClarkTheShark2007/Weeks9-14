@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -9,9 +11,23 @@ public class Player : MonoBehaviour
     bool acceleratePlayer;
     public Vector2 movement;
     Vector2 slipperyMovement;
+    public float HP = 99;
+    float maxHP = 99;
+    public Slider HPSlider;
+    public TextMeshProUGUI HPValue;
+
+    void Start()
+    {
+        HPSlider.wholeNumbers = true;
+        HPSlider.minValue = 0;
+        HPSlider.maxValue = maxHP;
+    }
 
     void Update()
     {
+        HPSlider.value = HP;
+        HPValue.text = HP + "/" + maxHP;
+
         if(isSlippery)
         {
             SlipperyPlayerMovement();
