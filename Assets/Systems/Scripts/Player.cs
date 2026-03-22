@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     float maxSpeed = 5f;
     bool isSlippery;
     bool acceleratePlayer;
-    Vector2 movement;
+    public Vector2 movement;
     Vector2 slipperyMovement;
 
     void Update()

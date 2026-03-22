@@ -5,35 +5,36 @@ using UnityEngine.Events;
 public class BoundChecker : MonoBehaviour
 {
     public List<SpriteRenderer> boundsSrs;
-    public bool isTouchingBounds = false;
-    public UnityEvent OnEnterHazard;
-    public UnityEvent OnExitHazard;
-    bool wasInHazardLastFrame;
+    bool isTouchingBounds = false;
+    public UnityEvent OnEnterBound;
+    public UnityEvent OnExitBound;
+    bool wasInBoundLastFrame;
 
+//Cite code Here
     void Update()
     {
-        wasInHazardLastFrame = isTouchingBounds;
-        bool isInHazardThisFrame = false; 
+        wasInBoundLastFrame = isTouchingBounds;
+        bool isInBoundThisFrame = false; 
         foreach(SpriteRenderer sr in boundsSrs)
         {
             if (sr.bounds.Contains(transform.position))
             {
                 if (isTouchingBounds)
                 {
-                    isInHazardThisFrame = true;
+                    isInBoundThisFrame = true;
                 }
                 else
                 {
-                    OnEnterHazard.Invoke();
+                    OnEnterBound.Invoke();
                     isTouchingBounds = true;
                     return;
                 }
             }
         }
-        if (wasInHazardLastFrame && !isInHazardThisFrame)
+        if (wasInBoundLastFrame && !isInBoundThisFrame)
         {
-            //just left the hazard
-            OnExitHazard.Invoke();
+            //just left the Bound
+            OnExitBound.Invoke();
             isTouchingBounds = false;
         }
     }
