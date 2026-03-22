@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public float speed;
+    float speed;
     float maxSpeed = 5f;
     bool isSlippery;
     bool acceleratePlayer;
