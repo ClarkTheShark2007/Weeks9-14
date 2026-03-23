@@ -1,16 +1,32 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackManager : MonoBehaviour
 {
+    GameObject attack;
+    public GameObject soapBlock;
+    //public GameObject dropplets;
+    //public GameObject bubbles;
+
+    public List<GameObject> activeAttacks;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void startAttack()
     {
-        
+        Debug.Log("Attack Started");
+        attack = Instantiate(soapBlock, transform.position, Quaternion.identity);
+        activeAttacks.Add(attack);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void removeAttacks()
     {
-        
+        for(int i = 0; i < activeAttacks.Count; i++)
+        {
+            //Debug.Log("Removing " + i);
+            attack = activeAttacks[i];
+            activeAttacks.Remove(attack);
+            Destroy(attack);
+        }
     }
 }

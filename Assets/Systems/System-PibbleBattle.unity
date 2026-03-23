@@ -659,6 +659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e21250a56c0e142890c252261b6243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackManager
+  soapBlock: {fileID: 8859023222394335427, guid: 4924594d90e1d4348924f15b3e9cefa3, type: 3}
+  activeAttacks: []
 --- !u!1 &1023939043
 GameObject:
   m_ObjectHideFlags: 0

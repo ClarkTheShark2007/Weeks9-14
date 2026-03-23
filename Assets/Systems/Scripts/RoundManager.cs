@@ -21,10 +21,23 @@ public class RoundManager : MonoBehaviour
         startNewRound();
     }
 
+    IEnumerator spawnAttack()
+    {
+        yield return new WaitForSeconds(Random.Range(0f, currentRound+1));
+        attackManager.startAttack();
+    }
+
     void startNewRound()
     {
         currentRound++;
         roundText.text = currentRound.ToString();
+        attackManager.removeAttacks();
+        for(int i = 0; i < currentRound; i++)
+        {
+            StartCoroutine(spawnAttack());
+        }
         StartCoroutine(roundTimer());
     }
+
+    
 }
