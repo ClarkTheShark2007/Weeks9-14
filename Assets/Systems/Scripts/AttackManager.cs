@@ -23,10 +23,9 @@ public class AttackManager : MonoBehaviour
     {
         for(int i = 0; i < activeAttacks.Count; i++)
         {
-            //Debug.Log("Removing " + i);
             attack = activeAttacks[i];
-            activeAttacks.Remove(attack);
             Destroy(attack);
         }
+        activeAttacks.Clear();
     }
 }
