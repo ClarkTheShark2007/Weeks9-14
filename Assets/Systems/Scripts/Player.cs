@@ -28,6 +28,11 @@ public class Player : MonoBehaviour
         HPSlider.value = HP;
         HPValue.text = HP + "/" + maxHP;
 
+        if (HP >= maxHP)
+        {
+            HP = maxHP;
+        }
+
         if(isSlippery)
         {
             SlipperyPlayerMovement();
@@ -56,6 +61,11 @@ public class Player : MonoBehaviour
                 speed = 0;
             }
         }
+    }
+
+    public void ModifyHP(int modifyAmount)
+    {
+        HP = HP + modifyAmount;
     }
 
     public void OnMove(InputAction.CallbackContext context) 

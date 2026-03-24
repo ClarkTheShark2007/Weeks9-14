@@ -1,12 +1,16 @@
+using System.Collections;
 using UnityEngine;
 
-public class AttackMovement : MonoBehaviour
+public class Attacks : MonoBehaviour
 {
    public int attackIndex; //1: Bubble, 2: Droplet, 3: Soap Block
     Vector2 bottomLeft;
     Vector2 topRight;
+    float t = 0;
+    bool Wiggle;
+    public AnimationCurve curve;
 
-    void Start()
+    void Awake()
     {
         bottomLeft = Camera.main.ScreenToWorldPoint(new Vector2(0,0));
         topRight = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
@@ -31,6 +35,9 @@ public class AttackMovement : MonoBehaviour
         if(attackIndex == 1)
         {
             transform.position += Vector3.up * Time.deltaTime*2f;
+            Vector3 newPos  = transform.position;
+            newPos.x = 1f * curve.Evaluate(t);
+            transform.position = newPos;
         }
         else if(attackIndex == 2)
         {
@@ -41,7 +48,5 @@ public class AttackMovement : MonoBehaviour
             
         }
     }
-
-
 
 }
