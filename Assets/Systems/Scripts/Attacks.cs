@@ -13,11 +13,17 @@ public class Attacks : MonoBehaviour
     public Transform Player;
     public AnimationCurve curve;
     public GameObject waterDropletPrefab;
-    bool activeAttack = false;
+    bool activeAttack = true;
 
     void Start()
     {
-        activeAttack = true;
+        if(activeAttack == true)
+        {
+            activeAttack = false;
+        } else if(activeAttack == false)
+        {
+            activeAttack = true;
+        }
     }
     void Awake()
     {
