@@ -13,7 +13,7 @@ public class Attacks : MonoBehaviour
     public Transform Player;
     public AnimationCurve curve;
     public GameObject waterDropletPrefab;
-    bool activeAttack = true;
+    public bool activeAttack = true;
 
     void Start()
     {
@@ -24,9 +24,7 @@ public class Attacks : MonoBehaviour
         {
             activeAttack = true;
         }
-    }
-    void Awake()
-    {
+
         bottomLeft = Camera.main.ScreenToWorldPoint(new Vector2(0,0));
         topRight = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
@@ -60,6 +58,11 @@ public class Attacks : MonoBehaviour
         {
             transform.localScale = new Vector2(scale, scale*-1);
         }
+
+        if(activeAttack == false)
+        {
+            transform.position = new Vector3(1000, 1000, 0);
+        } 
     }
 
     // Update is called once per frame
@@ -71,7 +74,7 @@ public class Attacks : MonoBehaviour
             transform.position += Vector3.up * Time.deltaTime*2f;
             Vector3 newPos  = transform.position;
             newPos.x = 1f * curve.Evaluate(t);
-            transform.position = newPos;
+            transform.position = new Vector3 (transform.position.x + newPos.x, transform.position.y, 0f);
         }
         else if(attackIndex == 2)
         {
