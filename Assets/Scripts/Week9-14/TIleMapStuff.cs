@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using Unity.Cinemachine;
 
 public class TIleMapStuff : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class TIleMapStuff : MonoBehaviour
     public Transform highlight;
 
     public Tile flower;
+    public CinemachineImpulseSource impulseSource;
 
     void Start()
     {
@@ -29,6 +31,7 @@ public class TIleMapStuff : MonoBehaviour
         {
             Debug.Log(tilemap.GetTile(cellPos));
             tilemap.SetTile(cellPos, flower);
+            impulseSource.GenerateImpulse(cellPos);
         }
     }
 }
