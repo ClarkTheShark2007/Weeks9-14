@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class Attacks : MonoBehaviour
     public AnimationCurve curve;
     public GameObject waterDropletPrefab;
     public bool activeAttack = true;
+    public List<GameObject> waterDroplets;
+    public GameObject spawnedWaterDroplet;
 
     void Start()
     {
@@ -62,6 +65,7 @@ public class Attacks : MonoBehaviour
         if(activeAttack == false)
         {
             transform.position = new Vector3(1000, 1000, 0);
+            transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
         } 
     }
 
@@ -70,15 +74,14 @@ public class Attacks : MonoBehaviour
     {
         if(attackIndex == 1)
         {
-            BouncyMovement();
             transform.position += Vector3.up * Time.deltaTime*2f;
-            Vector3 newPos  = transform.position;
-            newPos.x = 1f * curve.Evaluate(t);
-            transform.position = new Vector3 (transform.position.x + newPos.x, transform.position.y, 0f);
         }
         else if(attackIndex == 2)
         {
-            spawnWaterDroplets();
+            if(activeAttack)
+            {
+                spawnWaterDroplets();
+            }
         }
         else if(attackIndex == 3)
         {
@@ -89,33 +92,14 @@ public class Attacks : MonoBehaviour
         {
             Vector2 rotationDirection = (Vector2)Player.position - (Vector2)transform.position;
             transform.up = rotationDirection * Time.deltaTime;
-            transform.position = Vector2.Lerp(transform.position, Player.position, speed * Time.deltaTime);
-            StartCoroutine(DestroyAfterTime());
+            if(activeAttack)
+            {
+                StartCoroutine(DestroyAfterTime());
+                transform.position = Vector2.Lerp(transform.position, Player.position, speed * Time.deltaTime);
+            }
+
+            
         }
-    }
-
-    void BouncyMovement()
-    {
-            if(attackBool)
-            {
-                t += Time.deltaTime;
-                if(t > 1f)                
-                {
-                    t = 1f;
-                    attackBool = false;
-                }
-            }
-            if(!attackBool)
-            {
-                t -= Time.deltaTime;
-                attackBool = false;
-                if(t < 0f)                
-                {
-                    t = 0f;
-                    attackBool = true;
-                }
-
-            }
     }
 
     void spawnWaterDroplets()
@@ -124,14 +108,25 @@ public class Attacks : MonoBehaviour
         if(t >= 1f)
         {
             t = 0f;
-            Instantiate(waterDropletPrefab, transform.position, Quaternion.identity);
+            spawnedWaterDroplet = Instantiate(waterDropletPrefab, transform.position, Quaternion.identity);
+            waterDroplets.Add(spawnedWaterDroplet);
         }
     }
 
     IEnumerator DestroyAfterTime()
     {
         yield return new WaitForSeconds(5f);
-        Destroy(gameObject);
+        destoryAttack();
     }
 
+    public void destoryAttack()
+    {
+        for (int i = waterDroplets.Count - 1; i >= 0; i--)
+        {
+            GameObject droplet = waterDroplets[i];
+            waterDroplets.Remove(droplet);
+            Destroy(droplet);
+        }
+        Destroy(gameObject);
+    }
 }
