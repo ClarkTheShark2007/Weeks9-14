@@ -23,7 +23,8 @@ public class Wall : MonoBehaviour
         {
             newPos += new Vector2(pushDistance * -1, 0);
             playerInput.movement.x = 0f;
-        } else if (playerInput.movement.x < 0)
+        } 
+        else if (playerInput.movement.x < 0)
         {
             newPos += new Vector2(pushDistance, 0);
             playerInput.movement.x = 0f;

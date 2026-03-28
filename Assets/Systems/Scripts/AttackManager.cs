@@ -4,17 +4,17 @@ using UnityEngine;
 public class AttackManager : MonoBehaviour
 {
     GameObject attack;
-    public GameObject soapBlock;
+    public List<GameObject> attackPrefabs;
     //public GameObject dropplets;
     //public GameObject bubbles;
     public List<GameObject> activeAttacks;
-    public Attacks attackPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void startAttack()
     {
         Debug.Log("Attack Started");
-        attack = Instantiate(soapBlock, transform.position, Quaternion.identity);
+        int randomAttack = Random.Range(0, attackPrefabs.Count);
+        attack = Instantiate(attackPrefabs[randomAttack], transform.position, Quaternion.identity);
         activeAttacks.Add(attack);
     }
 

@@ -10,7 +10,6 @@ public class Attacks : MonoBehaviour
     float t = 0;
     float speed;
     float scale;
-    bool attackBool = true;
     public Transform Player;
     public AnimationCurve curve;
     public GameObject objectPrefabs;

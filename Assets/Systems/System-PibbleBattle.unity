@@ -205,12 +205,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1041933616855490411, guid: 8e30eb8b4dfeb5145ba88aaed3865eb3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3155258618197654795, guid: 8e30eb8b4dfeb5145ba88aaed3865eb3, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 1571473741}
+    - target: {fileID: 3155258618197654795, guid: 8e30eb8b4dfeb5145ba88aaed3865eb3, type: 3}
+      propertyPath: objectPrefabs
+      value: 
+      objectReference: {fileID: 2808268255829678963}
     - target: {fileID: 3155258618197654795, guid: 8e30eb8b4dfeb5145ba88aaed3865eb3, type: 3}
       propertyPath: waterDropletPrefab
       value: 
@@ -550,6 +554,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 713589877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &696298553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2808268256342008354, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
+  m_PrefabInstance: {fileID: 1543598764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &713589875
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,9 +742,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e21250a56c0e142890c252261b6243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackManager
-  soapBlock: {fileID: 1538561323}
+  attackPrefabs:
+  - {fileID: 696298553}
+  - {fileID: 1640261926}
+  - {fileID: 1538561323}
   activeAttacks: []
-  attackPrefab: {fileID: 0}
 --- !u!1 &1012944793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,13 +1683,21 @@ PrefabInstance:
       propertyPath: 'hazardSRs.Array.data[0]'
       value: 
       objectReference: {fileID: 1571473740}
+    - target: {fileID: 1506364247945865702, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
+      propertyPath: OnEnterHazard.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1571473742}
+    - target: {fileID: 1506364247945865702, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
+      propertyPath: OnEnterHazard.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ModifyHP
+      objectReference: {fileID: 0}
     - target: {fileID: 2808268256342008354, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
       propertyPath: m_Name
       value: Bubble
       objectReference: {fileID: 0}
     - target: {fileID: 2808268256342008354, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7154438627859525911, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1996,6 +2015,11 @@ MonoBehaviour:
   OnExitBound:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1640261926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1041933616855490411, guid: 8e30eb8b4dfeb5145ba88aaed3865eb3, type: 3}
+  m_PrefabInstance: {fileID: 147343383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1850346348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7626,7 +7650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5368343622509960490, guid: a5cc6bacb973e5f45a7b3a1d057d6636, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
