@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Attacks : MonoBehaviour
 {
-   public int attackIndex; //1: Bubble, 2: Hose, 3: Soap Block, 4: Water Droplets (Spawned by Hose)
+   public int attackIndex; //1: Bubble, 2: Hose, 3: Soap Block, 4: Water Droplets (Spawned by Hose), 5: Soap Particles (Spawned by Soap Block)
     Vector2 bottomLeft;
     Vector2 topRight;
     float t = 0;
@@ -13,10 +13,11 @@ public class Attacks : MonoBehaviour
     bool attackBool = true;
     public Transform Player;
     public AnimationCurve curve;
-    public GameObject waterDropletPrefab;
+    public GameObject objectPrefabs;
     public bool activeAttack = true;
-    public List<GameObject> waterDroplets;
-    public GameObject spawnedWaterDroplet;
+    public List<GameObject> prefabsSpawned;
+    public GameObject spawnedObject;
+    int spawnLocation; //1: Top left, 2: Top right, 3: Bottom left, 4: Bottom right
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class Attacks : MonoBehaviour
         topRight = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
         scale = Random.Range(0.7f, 1.2f);
-        speed = Random.Range(0.5f, 1.2f);
+        speed = Random.Range(0.5f, 2f);
 
 
         if(attackIndex == 1)
@@ -40,7 +41,7 @@ public class Attacks : MonoBehaviour
             transform.localScale = new Vector2(scale, scale);
             transform.position = new Vector3(Random.Range(-5.4f, 5.4f), bottomLeft.y, 0);
         }
-        else if(attackIndex == 2)
+        else if(attackIndex == 2 && activeAttack)
         {
             transform.position = new Vector3(Random.Range(-7.21f, 7.21f), Random.Range(0.16f, -4.53f));
             if(transform.position.x < 0)
@@ -55,7 +56,26 @@ public class Attacks : MonoBehaviour
         }
         else if(attackIndex == 3)
         {
-            
+            spawnLocation = Random.Range(1, 5);
+            if(spawnLocation == 1)
+            {
+                transform.position = new Vector3(bottomLeft.x, topRight.y, 0);
+            }
+            else if(spawnLocation == 2)
+            {
+                transform.position = new Vector3(topRight.x, topRight.y, 0);
+                transform.localScale = new Vector2(scale*-1, scale);
+            }
+            else if(spawnLocation == 3)
+            {
+                transform.position = new Vector3(bottomLeft.x, bottomLeft.y, 0);
+                transform.localScale = new Vector2(scale, scale);
+            }
+             else if(spawnLocation == 4)
+            {
+                transform.position = new Vector3(topRight.x, bottomLeft.y, 0);
+                transform.localScale = new Vector2(scale*-1, scale);
+            }
         }
         else if(attackIndex == 4)
         {
@@ -74,18 +94,37 @@ public class Attacks : MonoBehaviour
     {
         if(attackIndex == 1)
         {
-            transform.position += Vector3.up * Time.deltaTime*2f;
+            transform.position += Vector3.up * Time.deltaTime*speed;
         }
         else if(attackIndex == 2)
         {
             if(activeAttack)
             {
-                spawnWaterDroplets();
+                spawnPrefabs();
             }
         }
         else if(attackIndex == 3)
         {
-            
+            if(activeAttack)
+            {
+                spawnPrefabs();
+                if(spawnLocation == 1)
+                {
+                    transform.position += new Vector3(1, -1, 0) * Time.deltaTime*speed;
+                }
+                else if(spawnLocation == 2)
+                {
+                    transform.position += new Vector3(-1, -1, 0) * Time.deltaTime*speed;
+                }
+                else if(spawnLocation == 3)
+                {
+                    transform.position += new Vector3(1, 1, 0) * Time.deltaTime*speed;
+                }
+                else if(spawnLocation == 4)
+                {
+                    transform.position += new Vector3(-1, 1, 0) * Time.deltaTime*speed;
+                }
+            }
         }
 
         else if(attackIndex == 4)
@@ -97,19 +136,32 @@ public class Attacks : MonoBehaviour
                 StartCoroutine(DestroyAfterTime());
                 transform.position = Vector2.Lerp(transform.position, Player.position, speed * Time.deltaTime);
             }
+        } 
+        else if(attackIndex == 5)
+        {
+            t += 0.5f * Time.deltaTime;
+            if(t > 1)
+            {
+                t = 0;
+            }
+            float y = curve.Evaluate(t); 
+            transform.localScale = Vector3.one * curve.Evaluate(t);
 
-            
+            if(activeAttack)
+            {
+                StartCoroutine(DestroyAfterTime());
+            }
         }
     }
 
-    void spawnWaterDroplets()
+    void spawnPrefabs()
     {
         t += Time.deltaTime;
         if(t >= 1f)
         {
             t = 0f;
-            spawnedWaterDroplet = Instantiate(waterDropletPrefab, transform.position, Quaternion.identity);
-            waterDroplets.Add(spawnedWaterDroplet);
+            spawnedObject = Instantiate(objectPrefabs, transform.position, Quaternion.identity);
+            prefabsSpawned.Add(spawnedObject);
         }
     }
 
@@ -121,10 +173,10 @@ public class Attacks : MonoBehaviour
 
     public void destoryAttack()
     {
-        for (int i = waterDroplets.Count - 1; i >= 0; i--)
+        for (int i = prefabsSpawned.Count - 1; i >= 0; i--)
         {
-            GameObject droplet = waterDroplets[i];
-            waterDroplets.Remove(droplet);
+            GameObject droplet = prefabsSpawned[i];
+            prefabsSpawned.Remove(droplet);
             Destroy(droplet);
         }
         Destroy(gameObject);

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     float maxHP = 99;
     public Slider HPSlider;
     public TextMeshProUGUI HPValue;
+    float t;
 
     void Start()
     {
@@ -31,6 +32,15 @@ public class Player : MonoBehaviour
         if (HP >= maxHP)
         {
             HP = maxHP;
+        }
+
+        if(t <= 0) 
+        {
+            isSlippery = false;
+        } 
+        else
+        {
+            t -= Time.deltaTime;
         }
 
         if(isSlippery)
@@ -61,6 +71,12 @@ public class Player : MonoBehaviour
                 speed = 0;
             }
         }
+    }
+
+    public void slipperyEffect()
+    {
+        isSlippery = true;
+        t = 5f;
     }
 
     public void ModifyHP(int modifyAmount)
