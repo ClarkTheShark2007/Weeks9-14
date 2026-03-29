@@ -228,7 +228,6 @@ MonoBehaviour:
   lR: {fileID: 269041381}
   points: []
   mousePos: {x: 0, y: 0}
-  t: 0
 --- !u!120 &269041381
 LineRenderer:
   serializedVersion: 3
