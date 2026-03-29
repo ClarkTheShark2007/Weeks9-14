@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c375f2f7cd225ab48a770d1dbc8ddf59
+guid: d372eb7581f4c5242bf3d7a51d1b23e7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -33183290664590564
-    second: Pibble_0
+      213: 6031922739911453571
+    second: Speech_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pibble_0
+      name: Speech_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 336
-        height: 270
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 237
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c13657319fb1a8ff0800000000000000
-      internalID: -33183290664590564
+      spriteID: 38be50106c1b5b350800000000000000
+      internalID: 6031922739911453571
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 145cb5b93594c5d4484f7aff77dde8a1
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Pibble_0: -33183290664590564
+      Speech_0: 6031922739911453571
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
