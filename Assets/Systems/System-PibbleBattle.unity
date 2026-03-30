@@ -842,6 +842,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2808268256342008354, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
   m_PrefabInstance: {fileID: 1543598764}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &696298557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696298553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5edbce241c2ab458bd7638dffad588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoundChecker
+  boundsSrs:
+  - {fileID: 1571473740}
+  OnEnterBound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1571473742}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: ModifyHP
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 696298553}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExitBound:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &713589875
 GameObject:
   m_ObjectHideFlags: 0
@@ -7059,10 +7103,14 @@ PrefabInstance:
       propertyPath: waterDropletPrefab
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1506364247945865702, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2808268256342008354, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1538561327}
   m_SourcePrefab: {fileID: 100100000, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
 --- !u!4 &1502643581 stripped
 Transform:
@@ -7074,6 +7122,62 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2808268256342008354, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
   m_PrefabInstance: {fileID: 1502643580}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1538561327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538561323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5edbce241c2ab458bd7638dffad588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoundChecker
+  boundsSrs:
+  - {fileID: 1571473740}
+  OnEnterBound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1571473742}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: ModifyHP
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1571473742}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: slipperyEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1538561323}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExitBound:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1543598764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7150,10 +7254,14 @@ PrefabInstance:
       propertyPath: waterDropletPrefab
       value: 
       objectReference: {fileID: 2808268255829678963}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1506364247945865702, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2808268256342008354, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 696298557}
   m_SourcePrefab: {fileID: 100100000, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
 --- !u!1 &1571473739
 GameObject:
@@ -7165,9 +7273,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1571473741}
   - component: {fileID: 1571473742}
-  - component: {fileID: 1571473740}
-  - component: {fileID: 1571473743}
   - component: {fileID: 1571473744}
+  - component: {fileID: 1571473743}
+  - component: {fileID: 1571473740}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -7798,7 +7906,8 @@ PrefabInstance:
       propertyPath: waterDropletPrefab
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1506364247945865702, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7808,6 +7917,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2808268256342008354, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1850346351}
+    - targetCorrespondingSourceObject: {fileID: 2808268256342008354, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1850346356}
   m_SourcePrefab: {fileID: 100100000, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
 --- !u!4 &1850346349 stripped
 Transform:
@@ -12622,6 +12734,50 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1850346356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850346350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5edbce241c2ab458bd7638dffad588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoundChecker
+  boundsSrs:
+  - {fileID: 1571473740}
+  OnEnterBound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1571473742}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: ModifyHP
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1850346350}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExitBound:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1874571489
 GameObject:
   m_ObjectHideFlags: 0
@@ -13471,6 +13627,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1385375644395191695, guid: a5cc6bacb973e5f45a7b3a1d057d6636, type: 3}
   m_PrefabInstance: {fileID: 8971879018550292783}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7154438627359508554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2808268255829678963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5edbce241c2ab458bd7638dffad588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoundChecker
+  boundsSrs:
+  - {fileID: 1571473740}
+  OnEnterBound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1571473742}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: ModifyHP
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -15
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2808268255829678963}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExitBound:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &8971879018550292783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13539,10 +13739,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 176886489058192320, guid: a5cc6bacb973e5f45a7b3a1d057d6636, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5368343622509960490, guid: a5cc6bacb973e5f45a7b3a1d057d6636, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7154438627359508554}
   m_SourcePrefab: {fileID: 100100000, guid: a5cc6bacb973e5f45a7b3a1d057d6636, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
