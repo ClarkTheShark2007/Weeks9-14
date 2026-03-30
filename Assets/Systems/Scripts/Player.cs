@@ -2,9 +2,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
+    SpriteRenderer spriteRenderer;
     float speed;
     float maxSpeed = 5f;
     bool isSlippery;
@@ -18,9 +20,11 @@ public class Player : MonoBehaviour
     float t;
     public AudioSource hitAudio;
     public AudioSource healAudio;
+    bool canTakeDamage = true;
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         HPSlider.wholeNumbers = true;
         HPSlider.minValue = 0;
         HPSlider.maxValue = maxHP;
@@ -48,9 +52,11 @@ public class Player : MonoBehaviour
         if(isSlippery)
         {
             SlipperyPlayerMovement();
+            spriteRenderer.color = Color.cyan;
         } else
         {
             transform.position += (Vector3) movement * speed * Time.deltaTime;
+            spriteRenderer.color = Color.red;
         }
     }
 
@@ -83,15 +89,24 @@ public class Player : MonoBehaviour
 
     public void ModifyHP(int modifyAmount)
     {
-        HP = HP + modifyAmount;
         if (modifyAmount > 0)
         {
             healAudio.Play();
+            HP = HP + modifyAmount;
         }
-        if (modifyAmount < 0)
+        if (modifyAmount < 0 && canTakeDamage)
         {
             hitAudio.Play();
+            HP = HP + modifyAmount;
+            StartCoroutine(invincibleTime());
+            canTakeDamage = false;
         }
+    }
+
+    IEnumerator invincibleTime()
+    {
+        yield return new WaitForSeconds(0.75f);
+        canTakeDamage = true;
     }
 
     public void OnMove(InputAction.CallbackContext context) 
