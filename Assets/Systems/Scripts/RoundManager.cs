@@ -9,6 +9,7 @@ public class RoundManager : MonoBehaviour
     public TextMeshProUGUI roundText;
     public AttackManager attackManager;
     public Pibble pibble;
+    public Player player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,6 +40,16 @@ public class RoundManager : MonoBehaviour
             StartCoroutine(spawnAttack());
         }
         StartCoroutine(roundTimer());
+    }
+
+    void Update()
+    {
+        if(player.HP <= 0)
+        {
+            currentRound = 0;
+            player.HP = 99;
+            startNewRound();
+        }   
     }
 
     
