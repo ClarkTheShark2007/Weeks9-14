@@ -7064,12 +7064,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3e5396f1f220043ad57f03d03632d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  movement: {x: 0, y: 0}
   HP: 99
   HPSlider: {fileID: 1328197298}
   HPValue: {fileID: 1053144093}
   hitAudio: {fileID: 412178032}
   healAudio: {fileID: 682699517}
+  movement: {x: 0, y: 0}
 --- !u!114 &1571473743
 MonoBehaviour:
   m_ObjectHideFlags: 0

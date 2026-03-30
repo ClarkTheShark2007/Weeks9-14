@@ -6,23 +6,31 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
-    SpriteRenderer spriteRenderer;
+    //Player Varibles
     float speed;
     float maxSpeed = 5f;
-    bool isSlippery;
-    bool acceleratePlayer;
-    public Vector2 movement;
-    Vector2 slipperyMovement;
     public float HP = 99;
     float maxHP = 99;
-    public Slider HPSlider;
-    public TextMeshProUGUI HPValue;
-    float t;
-    public AudioSource hitAudio;
-    public AudioSource healAudio;
+
+    //Bools
+    bool isSlippery;
+    bool acceleratePlayer;
     bool canTakeDamage = true;
 
-    void Start()
+    //References
+    SpriteRenderer spriteRenderer;
+    public Slider HPSlider;
+    public TextMeshProUGUI HPValue;
+    public AudioSource hitAudio;
+    public AudioSource healAudio;
+
+    //Player Inputs / States 
+    public Vector2 movement;
+    Vector2 slipperyMovement;
+    float t;
+
+
+    void Start() //Setsup players HP and readys UI text/slider
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         HPSlider.wholeNumbers = true;
