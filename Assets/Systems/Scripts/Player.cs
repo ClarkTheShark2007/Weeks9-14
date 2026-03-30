@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public Slider HPSlider;
     public TextMeshProUGUI HPValue;
     float t;
+    public AudioSource hitAudio;
+    public AudioSource healAudio;
 
     void Start()
     {
@@ -82,6 +84,14 @@ public class Player : MonoBehaviour
     public void ModifyHP(int modifyAmount)
     {
         HP = HP + modifyAmount;
+        if (modifyAmount > 0)
+        {
+            healAudio.Play();
+        }
+        if (modifyAmount < 0)
+        {
+            hitAudio.Play();
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context) 
