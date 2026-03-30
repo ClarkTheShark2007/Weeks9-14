@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1385375644395191695}
   - component: {fileID: 4029792165923811461}
   - component: {fileID: 1535808825265640861}
-  - component: {fileID: 176886489058192320}
+  - component: {fileID: 5728042029900188164}
   m_Layer: 0
   m_Name: Water Droplet
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5368343622509960490}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.35534, y: 1.13353, z: 0}
   m_LocalScale: {x: 0.4241, y: 0.4241, z: 0.4241}
   m_ConstrainProportionsScale: 0
@@ -131,8 +131,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  waterDropletPrefab: {fileID: 0}
---- !u!114 &176886489058192320
+  objectPrefabs: {fileID: 0}
+  activeAttack: 1
+  prefabsSpawned: []
+  spawnedObject: {fileID: 0}
+--- !u!114 &5728042029900188164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,13 +144,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5368343622509960490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1655fc43f68d7bc4281f9c6c3b325f01, type: 3}
+  m_Script: {fileID: 11500000, guid: cb5edbce241c2ab458bd7638dffad588, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hazard
-  hazardSRs:
+  m_EditorClassIdentifier: Assembly-CSharp::BoundChecker
+  boundsSrs:
   - {fileID: 0}
-  isInHazard: 0
-  OnEnterHazard:
+  OnEnterBound:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
@@ -169,11 +171,11 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnExitHazard:
+  OnExitBound:
     m_PersistentCalls:
       m_Calls: []

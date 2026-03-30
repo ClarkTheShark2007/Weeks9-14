@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackMovement
   attackIndex: 2
+  Player: {fileID: 0}
   curve:
     serializedVersion: 2
     m_Curve:
@@ -129,3 +130,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  objectPrefabs: {fileID: 0}
+  activeAttack: 1
+  prefabsSpawned: []
+  spawnedObject: {fileID: 0}
