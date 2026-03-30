@@ -8,6 +8,7 @@ public class RoundManager : MonoBehaviour
     float currentRound = 0;
     public TextMeshProUGUI roundText;
     public AttackManager attackManager;
+    public Pibble pibble;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +31,7 @@ public class RoundManager : MonoBehaviour
     void startNewRound()
     {
         currentRound++;
+        pibble.newPibbleReaction();
         roundText.text = currentRound.ToString();
         attackManager.removeAttacks();
         for(int i = 0; i < currentRound; i++)

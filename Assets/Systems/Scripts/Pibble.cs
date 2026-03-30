@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Pibble : MonoBehaviour
 {
-    int reactionIndex = 1;
+    public int reactionIndex;
     public GameObject sleepingReaction;
     public GameObject tauntingReaction;
 
@@ -27,6 +27,8 @@ public class Pibble : MonoBehaviour
 
     public void newPibbleReaction()
     {
-        reactionIndex = Random.Range(0, 3);
+        reactionIndex = 1;
+        reactionIndex = Random.Range(1, 4);
+        Debug.Log("Pibble Reaction: " + reactionIndex);
     }
 }
