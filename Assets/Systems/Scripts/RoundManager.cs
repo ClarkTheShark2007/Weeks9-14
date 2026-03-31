@@ -48,7 +48,15 @@ public class RoundManager : MonoBehaviour
         {
             currentRound = 0;
             player.HP = 99;
-            startNewRound();
+            if (roundTimer() != null)
+            {
+                StopCoroutine(roundTimer());
+            }
+
+            if (spawnAttack() != null)
+            {
+                StopCoroutine(spawnAttack());
+            }
         }   
     }
 

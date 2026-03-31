@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class Attacks : MonoBehaviour
 {
-   public int attackIndex; //1: Bubble, 2: Hose, 3: Soap Block, 4: Water Droplets (Spawned by Hose), 5: Soap Particles (Spawned by Soap Block)
-    Vector2 bottomLeft;
-    Vector2 topRight;
-    float t = 0;
+    //Varibles
+    public int attackIndex; //1: Bubble, 2: Hose, 3: Soap Block, 4: Water Droplets (Spawned by Hose), 5: Soap Particles (Spawned by Soap Block)
+    float t = 0; //Used for Soap Block and Hose when spawning prefabs
     float speed;
     float scale;
+    int spawnLocation; //Only used for Bubbles! 1: Top left, 2: Top right, 3: Bottom left, 4: Bottom right
+    public bool activeAttack = true; //Used for prefabs in the scene to make they do not get destoryed
+
+    //Refernces
     public Transform Player;
     public AnimationCurve curve;
     public GameObject objectPrefabs;
-    public bool activeAttack = true;
     public List<GameObject> prefabsSpawned;
     public GameObject spawnedObject;
-    int spawnLocation; //1: Top left, 2: Top right, 3: Bottom left, 4: Bottom right
+
+    //Vectors
+    Vector2 bottomLeft;
+    Vector2 topRight;
+
 
     void Start()
     {
-        if(activeAttack == true)
+        if(activeAttack == true) //Allows for prefabs to be setup, bools checked in spawning more prefabs
         {
             activeAttack = false;
         } else if(activeAttack == false)
@@ -35,30 +41,32 @@ public class Attacks : MonoBehaviour
         speed = Random.Range(0.5f, 2f);
 
 
-        if(attackIndex == 1)
+        //Spawn Locations / Scale for Each Attack
+        if(attackIndex == 1) //Bubbles
         {
             transform.localScale = new Vector2(scale, scale);
             transform.position = new Vector3(Random.Range(-5.4f, 5.4f), bottomLeft.y, 0);
         }
-        else if(attackIndex == 2 && activeAttack)
+        else if(attackIndex == 2 && activeAttack) //Hose
         {
+            //Changes the Scale of X to make it face the player DEPENDING what side of the box it spawn
             transform.position = new Vector3(Random.Range(-7.21f, 7.21f), Random.Range(0.16f, -4.53f));
             if(transform.position.x < 0)
             {
-                transform.position = new Vector3(-7.21f, transform.position.y, 0);
+                transform.position = new Vector3(-7.21f, transform.position.y, 0); //Left Side
 
             } else
             {
-                transform.position = new Vector3(7.21f, transform.position.y, 0);
+                transform.position = new Vector3(7.21f, transform.position.y, 0); //Right Side
                 transform.localScale = new Vector2(transform.localScale.x*-1, transform.localScale.y);
             }
         }
-        else if(attackIndex == 3)
+        else if(attackIndex == 3) //Soap Block
         {
             spawnLocation = Random.Range(1, 5);
             if(spawnLocation == 1)
             {
-                transform.position = new Vector3(bottomLeft.x, topRight.y, 0);
+                transform.position = new Vector3(bottomLeft.x, topRight.y, 0); 
             }
             else if(spawnLocation == 2)
             {
@@ -76,12 +84,16 @@ public class Attacks : MonoBehaviour
                 transform.localScale = new Vector2(scale*-1, scale);
             }
         }
-        else if(attackIndex == 4)
+        else if(attackIndex == 4) //Water Droplets 
         {
-            transform.localScale = new Vector2(scale, scale*-1);
+            transform.localScale = new Vector2(scale, scale*-1); //Rotates the sprite Y scale to make the bottom of droplet face the player
+        }
+        else if (attackIndex == 5) //Soap Particles
+        {
+            transform.localScale = new Vector2(scale, scale);
         }
 
-        if(activeAttack == false)
+        if (activeAttack == false) //Moves off screen and resets any transform scale from the above scale
         {
             transform.position = new Vector3(1000, 1000, 0);
             transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);

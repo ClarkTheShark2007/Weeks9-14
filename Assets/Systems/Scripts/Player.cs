@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     float maxHP = 99;
 
     //Bools
-    bool isSlippery;
+    bool isSlippery = false;
     bool acceleratePlayer;
     bool canTakeDamage = true;
 
@@ -119,19 +119,23 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context) 
     {
-        movement = context.ReadValue<Vector2>();
-        if(isSlippery)
+        if (context.performed)
         {
-            acceleratePlayer = true;
-            if(context.canceled)
+            movement = context.ReadValue<Vector2>();
+            if (isSlippery)
             {
-                acceleratePlayer = false;
+                acceleratePlayer = true;
             }
+            else
+            {
+                speed = maxSpeed;
+            }
+        }
 
-        } else
+        if (context.canceled)
         {
-            speed = maxSpeed;
+            movement = context.ReadValue<Vector2>();
+            acceleratePlayer = false;
         }
     }
-
 }
