@@ -6900,6 +6900,14 @@ PrefabInstance:
       value: Bubble
       objectReference: {fileID: 0}
     - target: {fileID: 4107834604889084017, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
+      propertyPath: boundSr.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107834604889084017, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
+      propertyPath: 'boundSr.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1571473740}
+    - target: {fileID: 4107834604889084017, guid: 2164fc022de41e249bb82607dd4eb927, type: 3}
       propertyPath: 'boundsSrs.Array.data[0]'
       value: 
       objectReference: {fileID: 1571473740}
@@ -7070,6 +7078,7 @@ MonoBehaviour:
   hitAudio: {fileID: 412178032}
   healAudio: {fileID: 682699517}
   movement: {x: 0, y: 0}
+  slipperyMovement: {x: 0, y: 0}
 --- !u!114 &1571473743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7200,10 +7209,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5edbce241c2ab458bd7638dffad588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoundChecker
-  boundsSrs:
+  boundSr:
+  - {fileID: 2067480637}
   - {fileID: 669645417}
   - {fileID: 1023939045}
-  - {fileID: 2067480637}
   - {fileID: 2001246339}
   OnEnterBound:
     m_PersistentCalls:
@@ -7220,9 +7229,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnExitBound:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1590328211
 GameObject:
   m_ObjectHideFlags: 0
@@ -8137,7 +8143,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -33183290664590564, guid: c375f2f7cd225ab48a770d1dbc8ddf59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -8315,6 +8321,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1571473742}
     - target: {fileID: 5607366039679419806, guid: e934ce0b51af6b14ba46db23c74d006c, type: 3}
+      propertyPath: boundSr.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607366039679419806, guid: e934ce0b51af6b14ba46db23c74d006c, type: 3}
+      propertyPath: 'boundSr.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1571473740}
+    - target: {fileID: 5607366039679419806, guid: e934ce0b51af6b14ba46db23c74d006c, type: 3}
       propertyPath: 'boundsSrs.Array.data[0]'
       value: 
       objectReference: {fileID: 1571473740}
@@ -8451,6 +8465,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1571473742}
     - target: {fileID: 1202200679552492464, guid: dec479f2094cc14459ee93c7ce1d6a16, type: 3}
+      propertyPath: boundSr.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202200679552492464, guid: dec479f2094cc14459ee93c7ce1d6a16, type: 3}
+      propertyPath: 'boundSr.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1571473740}
+    - target: {fileID: 1202200679552492464, guid: dec479f2094cc14459ee93c7ce1d6a16, type: 3}
       propertyPath: 'boundsSrs.Array.data[0]'
       value: 
       objectReference: {fileID: 1571473740}
@@ -8582,6 +8604,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water Droplet
       objectReference: {fileID: 0}
+    - target: {fileID: 5728042029900188164, guid: a5cc6bacb973e5f45a7b3a1d057d6636, type: 3}
+      propertyPath: boundSr.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728042029900188164, guid: a5cc6bacb973e5f45a7b3a1d057d6636, type: 3}
+      propertyPath: 'boundSr.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1571473740}
     - target: {fileID: 5728042029900188164, guid: a5cc6bacb973e5f45a7b3a1d057d6636, type: 3}
       propertyPath: 'boundsSrs.Array.data[0]'
       value: 

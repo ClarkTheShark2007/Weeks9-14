@@ -103,23 +103,26 @@ public class Attacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(attackIndex == 1)
+        //Differment patterns for each attack depending on coresponding Index
+        if(attackIndex == 1) //Bubbles
         {
             transform.position += Vector3.up * Time.deltaTime*speed;
         }
-        else if(attackIndex == 2)
+        else if(attackIndex == 2) //Hose
         {
             if(activeAttack)
             {
                 spawnPrefabs();
             }
         }
-        else if(attackIndex == 3)
+        else if(attackIndex == 3) //Soap Block
         {
             if(activeAttack)
             {
                 spawnPrefabs();
-                if(spawnLocation == 1)
+                
+                //Differnemnt movement pattern based on spawn location
+                if(spawnLocation == 1) 
                 {
                     transform.position += new Vector3(1, -1, 0) * Time.deltaTime*speed;
                 }
@@ -138,17 +141,17 @@ public class Attacks : MonoBehaviour
             }
         }
 
-        else if(attackIndex == 4)
+        else if(attackIndex == 4) //Water Droplets
         {
             Vector2 rotationDirection = (Vector2)Player.position - (Vector2)transform.position;
             transform.up = rotationDirection * Time.deltaTime;
             if(activeAttack)
             {
                 StartCoroutine(DestroyAfterTime());
-                transform.position = Vector2.Lerp(transform.position, Player.position, speed * Time.deltaTime);
+                transform.position = Vector2.Lerp(transform.position, Player.position, speed * Time.deltaTime); //Moves towards the player based on the speed and transform position
             }
         } 
-        else if(attackIndex == 5)
+        else if(attackIndex == 5) //Soap Particles
         {
             t += 0.5f * Time.deltaTime;
             if(t > 1)
@@ -165,7 +168,7 @@ public class Attacks : MonoBehaviour
         }
     }
 
-    void spawnPrefabs()
+    void spawnPrefabs() //Used by Hose and Soap Block, spawns prefab refernce depending on the attack and add it to the list.
     {
         t += Time.deltaTime;
         if(t >= 1f)
@@ -176,13 +179,13 @@ public class Attacks : MonoBehaviour
         }
     }
 
-    IEnumerator DestroyAfterTime()
+    IEnumerator DestroyAfterTime() //Used by Water Droplets and Soap Particles, waits for 5 seconds then destroys itself.
     {
         yield return new WaitForSeconds(5f);
         destoryAttack();
     }
 
-    public void destoryAttack()
+    public void destoryAttack() //Removes and Destroyes all prefabs spawned by the attack, called by when a new round is started
     {
         for (int i = prefabsSpawned.Count - 1; i >= 0; i--)
         {

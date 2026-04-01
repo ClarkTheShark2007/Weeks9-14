@@ -4,20 +4,20 @@ using UnityEngine.Events;
 
 public class BoundChecker : MonoBehaviour
 {
-    public List<SpriteRenderer> boundsSrs;
+
+//Taken and modified from the Deadly Dungeon Example, from the slate unity package. 
+    public List<SpriteRenderer> boundSr; 
     bool isTouchingBounds = false;
     public UnityEvent OnEnterBound;
-    public UnityEvent OnExitBound;
     bool wasInBoundLastFrame;
 
-//Cite code Here
     void Update()
     {
         wasInBoundLastFrame = isTouchingBounds;
         bool isInBoundThisFrame = false; 
-        foreach(SpriteRenderer sr in boundsSrs)
+        foreach(SpriteRenderer sr in boundSr) //Checks to see if sprite bounds are in the middle
         {
-            if (sr.bounds.Contains(transform.position))
+            if (sr.bounds.Contains(transform.position)) //Invokes Unity Event, allowing for diffrent function for each object
             {
                 if (isTouchingBounds)
                 {
@@ -31,10 +31,8 @@ public class BoundChecker : MonoBehaviour
                 }
             }
         }
-        if (wasInBoundLastFrame && !isInBoundThisFrame)
+        if (wasInBoundLastFrame && !isInBoundThisFrame) //Leaving sprite bounds
         {
-            //just left the Bound
-            OnExitBound.Invoke();
             isTouchingBounds = false;
         }
     }

@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     //Player Inputs / States 
     public Vector2 movement;
-    Vector2 slipperyMovement;
+    public Vector2 slipperyMovement;
     float t;
 
 
