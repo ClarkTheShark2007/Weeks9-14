@@ -14,6 +14,9 @@ public class RoundManager : MonoBehaviour
     public Pibble pibble;
     public Player player;
 
+    Coroutine roundTimerCoroutine;
+    Coroutine spawnAttackCoroutine;
+
     void Start()
     {
         startNewRound();
@@ -42,7 +45,7 @@ public class RoundManager : MonoBehaviour
         {
             StartCoroutine(spawnAttack());
         }
-        StartCoroutine(roundTimer());
+        roundTimerCoroutine = StartCoroutine(roundTimer());
     }
 
     void Update() //Checks to see if the game should be restarted if the player HP is 0. Stops all active Coroutines to prevent multiple attacks spawningf rom the previous round after the game is restarted.
@@ -51,9 +54,9 @@ public class RoundManager : MonoBehaviour
         {
             currentRound = 0;
             player.HP = 99;
-            if (roundTimer() != null)
+            if(roundTimerCoroutine != null)
             {
-                StopCoroutine(roundTimer());
+                StopCoroutine(roundTimerCoroutine);
             }
 
             if (spawnAttack() != null)
